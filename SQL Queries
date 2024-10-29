@@ -1,0 +1,116 @@
+-- create a new database called hospital_emr
+CREATE DATABASE hospital_emr;
+
+-- create a table called "location"
+CREATE TABLE location (
+location_id INT PRIMARY KEY AUTO_INCREMENT,
+city VARCHAR(30),
+state VARCHAR(30)
+);
+
+-- create a table called "insurance"
+CREATE TABLE insurance (
+insurance_id INT PRIMARY KEY AUTO_INCREMENT,
+insurance_type VARCHAR(70)
+);
+
+-- create a table called "diagnosis"
+CREATE TABLE diagnosis (
+diagnosis_id INT PRIMARY KEY AUTO_INCREMENT,
+diagnosis_name VARCHAR(200)
+);
+
+-- create a table called "patients" 
+CREATE TABLE patients (
+patient_id INT PRIMARY KEY auto_increment,
+age INT,
+gender enum ('Male', 'Female', 'Other'),
+location_id int,
+insurance_id int,
+primary_diagnosis_id int,
+foreign key (location_id) references location(location_id),
+foreign key (insurance_id) references insurance(insurance_id),
+foreign key (primary_diagnosis_id) references diagnosis(diagnosis_id)
+);
+
+-- Insert data into the "location" table
+
+INSERT INTO location (city, state) VALUES
+('New York', 'NY'), ('Los Angeles', 'CA'), ('Chicago', 'IL'), ('Houston', 'TX'),
+('Phoenix', 'AZ'), ('Philadelphia', 'PA'), ('San Antonio', 'TX'), ('San Diego', 'CA'),
+('Dallas', 'TX'), ('San Jose', 'CA'), ('Austin', 'TX'), ('Jacksonville', 'FL'),
+('Fort Worth', 'TX'), ('Columbus', 'OH'), ('San Francisco', 'CA'), ('Charlotte', 'NC'),
+('Indianapolis', 'IN'), ('Seattle', 'WA'), ('Denver', 'CO'), ('Washington', 'DC'),
+('Boston', 'MA'), ('El Paso', 'TX'), ('Nashville', 'TN'), ('Detroit', 'MI'),
+('Oklahoma City', 'OK'), ('Portland', 'OR'), ('Las Vegas', 'NV'), ('Memphis', 'TN'),
+('Louisville', 'KY'), ('Baltimore', 'MD'), ('Milwaukee', 'WI'), ('Albuquerque', 'NM'),
+('Tucson', 'AZ'), ('Fresno', 'CA'), ('Sacramento', 'CA'), ('Kansas City', 'MO'),
+('Long Beach', 'CA'), ('Mesa', 'AZ'), ('Atlanta', 'GA'), ('Colorado Springs', 'CO'),
+('Virginia Beach', 'VA'), ('Raleigh', 'NC'), ('Omaha', 'NE'), ('Miami', 'FL'),
+('Oakland', 'CA'), ('Minneapolis', 'MN'), ('Tulsa', 'OK'), ('Wichita', 'KS'),
+('New Orleans', 'LA'), ('Arlington', 'TX');
+
+-- Insert data into the "insurance" table
+
+INSERT INTO insurance (insurance_type) VALUES
+('Medicare'), ('Medicaid'), ('Private - Blue Cross'), ('Private - UnitedHealth'),
+('Self-Pay'), ('Veterans Health'), ('Private - Aetna'), ('Private - Cigna'),
+('Charity'), ('Private - Humana');
+
+-- -- Insert data into the "insurance" table
+
+INSERT INTO diagnosis (diagnosis_name) VALUES
+('Diabetes'), ('Hypertension'), ('Asthma'), ('Heart Disease'), ('Depression'),
+('Anxiety'), ('Arthritis'), ('COPD'), ('Cancer'), ('Obesity'),
+('Alzheimer\'s Disease'), ('Stroke'), ('Chronic Kidney Disease'), ('HIV/AIDS'),
+('Liver Disease'), ('Migraine'), ('Epilepsy'), ('Osteoporosis'), ('Tuberculosis'),
+('Hypothyroidism'), ('Hyperlipidemia'), ('Bronchitis'), ('Pneumonia'),
+('Insomnia'), ('Gastroesophageal Reflux Disease (GERD)'), ('Cystic Fibrosis'),
+('Psoriasis'), ('Eczema'), ('Bipolar Disorder'), ('Schizophrenia'),
+('Irritable Bowel Syndrome (IBS)'), ('Anemia'), ('Celiac Disease'),
+('Multiple Sclerosis'), ('Parkinson\'s Disease'), ('Ulcerative Colitis'),
+('Crohn\'s Disease'), ('Dementia'), ('Pancreatitis'), ('Gout');
+
+-- insert data into the "patients" table
+
+INSERT INTO patients (age, gender, location_id, insurance_id, primary_diagnosis_id) VALUES
+(45, 'Male', 1, 3, 1), (38, 'Female', 2, 1, 2), (29, 'Other', 3, 2, 3),
+(63, 'Male', 4, 1, 4), (55, 'Female', 5, 4, 5), (22, 'Male', 6, 7, 6),
+(47, 'Female', 7, 3, 7), (54, 'Male', 8, 1, 8), (33, 'Female', 9, 9, 9),
+(67, 'Male', 10, 5, 10), (41, 'Female', 11, 3, 11), (52, 'Male', 12, 2, 12),
+(39, 'Female', 13, 1, 13), (46, 'Male', 14, 8, 14), (59, 'Female', 15, 7, 15),
+(32, 'Male', 16, 10, 16), (27, 'Female', 17, 6, 17), (51, 'Male', 18, 1, 18),
+(61, 'Female', 19, 2, 19), (42, 'Male', 20, 4, 20), (34, 'Female', 21, 5, 21),
+(49, 'Male', 22, 6, 22), (56, 'Female', 23, 7, 23), (40, 'Male', 24, 8, 24),
+(50, 'Female', 25, 9, 25), (62, 'Male', 26, 10, 26), (48, 'Female', 27, 1, 27),
+(30, 'Male', 28, 2, 28), (36, 'Female', 29, 3, 29), (57, 'Male', 30, 4, 30),
+(44, 'Female', 31, 5, 31), (53, 'Male', 32, 6, 32), (35, 'Female', 33, 7, 33),
+(60, 'Male', 34, 8, 34), (43, 'Female', 35, 9, 35), (58, 'Male', 36, 10, 36),
+(37, 'Female', 37, 1, 1), (64, 'Male', 38, 2, 2), (28, 'Female', 39, 3, 3),
+(21, 'Male', 40, 4, 4), (65, 'Female', 41, 5, 5), (25, 'Male', 42, 6, 6),
+(31, 'Female', 43, 7, 7), (69, 'Male', 44, 8, 8), (24, 'Female', 45, 9, 9),
+(68, 'Male', 46, 10, 10), (26, 'Female', 47, 1, 11), (33, 'Male', 48, 2, 12),
+(52, 'Female', 49, 3, 13), (63, 'Male', 50, 4, 14), (47, 'Female', 1, 5, 15),
+(22, 'Male', 2, 6, 16), (55, 'Female', 3, 7, 17), (46, 'Male', 4, 8, 18),
+(29, 'Female', 5, 9, 19), (34, 'Male', 6, 10, 20), (57, 'Female', 7, 1, 21),
+(43, 'Male', 8, 2, 22), (38, 'Female', 9, 3, 23), (49, 'Male', 10, 4, 24),
+(53, 'Female', 11, 5, 25), (66, 'Male', 12, 6, 26), (28, 'Female', 13, 7, 27),
+(62, 'Male', 14, 8, 28), (41, 'Female', 15, 9, 29), (50, 'Male', 16, 10, 30),
+(32, 'Female', 17, 1, 31), (59, 'Male', 18, 2, 32), (25, 'Female', 19, 3, 33),
+(37, 'Male', 20, 4, 34), (48, 'Female', 21, 5, 35), (61, 'Male', 22, 6, 36),
+(23, 'Female', 23, 7, 1), (39, 'Male', 24, 8, 2), (35, 'Female', 25, 9, 3),
+(40, 'Male', 26, 10, 4), (51, 'Female', 27, 1, 5), (27, 'Male', 28, 2, 6),
+(42, 'Female', 29, 3, 7), (56, 'Male', 30, 4, 8), (64, 'Female', 31, 5, 9),
+(33, 'Male', 32, 6, 10), (45, 'Female', 33, 7, 11), (54, 'Male', 34, 8, 12),
+(22, 'Female', 35, 9, 13), (44, 'Male', 36, 10, 14), (60, 'Female', 37, 1, 15),
+(26, 'Male', 38, 2, 16), (49, 'Female', 39, 3, 17), (58, 'Male', 40, 4, 18),
+(30, 'Female', 41, 5, 19), (31, 'Male', 42, 6, 20), (67, 'Female', 43, 7, 21);
+
+-- Joining the tables together to get a unified view:
+SELECT patients.age, patients.gender, location.city, diagnosis.diagnosis_name
+FROM patients 
+JOIN location on patients.location_id=location.location_id
+JOIN diagnosis on patients.primary_diagnosis_id=diagnosis.diagnosis_id
+LIMIT 10;
+
+
