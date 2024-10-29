@@ -21,8 +21,6 @@ The following key metrics will help to achieve the busines objectives mentioned 
 * Insurance Type Breakdown
 * Location Distribution
 
-### Recommendations
-
 ### Project Summary
 The Patient Demographics Dashboard offers an essential view into the demographic makeup of the hospital’s patient population, aiding administrators in decision-making and resource allocation.
 By identifying age, gender, diagnosis, insurance, and location trends, this dashboard equips healthcare leaders with the insights necessary to optimize patient care and operational efficiency.
